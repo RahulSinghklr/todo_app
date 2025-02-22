@@ -1,0 +1,156 @@
+
+/* ✨ Reset & Background */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to right, #232526, #414345);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 20px;
+}
+
+/* ✨ Glassmorphism Container */
+.container {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 30px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+    color: white;
+}
+
+/* ✨ Input Box & Button */
+.input-container {
+    display: flex;
+    gap: 10px;
+}
+
+input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    backdrop-filter: blur(5px);
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* ✨ 3D Button Effect */
+button {
+    background: linear-gradient(to right, #ff9966, #ff5e62);
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(255, 94, 98, 0.4);
+}
+
+/* ✨ To-Do List Container */
+.todo-list-container {
+    margin-top: 20px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+/* ✨ To-Do Card Style */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* ✨ Card Hover Effect */
+li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+}
+
+/* ✨ Delete Button */
+li button {
+    background: linear-gradient(to right, #ff416c, #ff4b2b);
+    border: none;
+    padding: 7px 10px;
+    border-radius: 6px;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+li button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(255, 75, 43, 0.4);
+}
+
+/* ✨ Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        max-width: 350px;
+    }
+    
+    input {
+        font-size: 14px;
+        padding: 8px;
+    }
+    
+    button {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+
+    li {
+        font-size: 14px;
+        padding: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        width: 100%;
+        padding: 20px;
+    }
+    
+    input {
+        font-size: 14px;
+        padding: 8px;
+    }
+    
+    button {
+        padding: 8px 10px;
+        font-size: 14px;
+    }
+    
+    li {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
