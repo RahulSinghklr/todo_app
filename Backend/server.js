@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(cors()); 
 
 // ✅ API Routes
-app.use('/api', todoRoutes);
+app.use('/api/todos', todoRoutes);
 
 // ✅ Ensure MONGO_URI is Set
 if (!process.env.MONGO_URI) {
