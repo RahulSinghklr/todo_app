@@ -1,26 +1,32 @@
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
-const cors = require('cors'); // If using CORS
+const cors = require('cors');
 const todoRoutes = require('./routes/todoRoutes'); // Ensure correct path
 
 const app = express();
-app.use(express.json()); // Middleware to parse JSON
-app.use(cors()); // If using CORS
 
-app.use('/api', todoRoutes); // Make sure `todoRoutes` is correctly imported
+// ✅ Middleware
+app.use(express.json()); 
+app.use(cors()); 
 
+// ✅ API Routes
+app.use('/api', todoRoutes);
 
-  module.exports = async () => {
-    try {
-        await mongoose.connect(process.env.MONGO_URI, {});
-        console.log("CONNECTED TO DATABASE SUCCESSFULLY");
-    } catch (error) {
-        console.error('COULD NOT CONNECT TO DATABASE:', error.message);
-    }
-  };
+// ✅ Ensure MONGO_URI is Set
+if (!process.env.MONGO_URI) {
+    console.error("❌ MONGO_URI is missing from the environment variables.");
+    process.exit(1);
+}
 
+// ✅ Connect to MongoDB
+mongoose.connect(process.env.MONGO_URI)
+    .then(() => console.log("✅ MongoDB Connected"))
+    .catch(err => {
+        console.error("❌ MongoDB Connection Error:", err.message);
+        process.exit(1);
+    });
 
-
+// ✅ Start the Server
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
