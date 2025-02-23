@@ -1,4 +1,4 @@
-const API_URL = "https://todo-app-backend-35d5.onrender.com";  // Make sure your backend is running
+const API_URL = "https://todo-app-backend-35d5.onrender.com/api/todos"; // Make sure your backend is running
 
 // Fetch and display todos
 async function fetchTodos() {

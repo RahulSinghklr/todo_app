@@ -2,7 +2,17 @@ const express = require('express');
 const router = express.Router();
 const Todo = require('../models/todo');
 
-// Routes
+// ✅ Fetch all todos (Fix: Change `/todos` to `/`)
+router.get('/', async (req, res) => { 
+    try {
+        const todos = await Todo.find();
+        res.json(todos);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
+// ✅ Add a new todo (No change)
 router.post('/add', async (req, res) => {
     try {
         const newTodo = new Todo({ text: req.body.text });
@@ -13,15 +23,7 @@ router.post('/add', async (req, res) => {
     }
 });
 
-router.get('/todos', async (req, res) => {
-    try {
-        const todos = await Todo.find();
-        res.json(todos);
-    } catch (error) {
-        res.status(500).json({ message: error.message });
-    }
-});
-
+// ✅ Update a todo (No change)
 router.put('/update/:id', async (req, res) => {
     try {
         const todo = await Todo.findByIdAndUpdate(req.params.id, req.body, { new: true });
@@ -31,6 +33,7 @@ router.put('/update/:id', async (req, res) => {
     }
 });
 
+// ✅ Delete a todo (No change)
 router.delete('/delete/:id', async (req, res) => {
     try {
         await Todo.findByIdAndDelete(req.params.id);
@@ -40,6 +43,5 @@ router.delete('/delete/:id', async (req, res) => {
     }
 });
 
-// ✅ Ensure this export is correct
+// ✅ Export the router
 module.exports = router;
-
